@@ -14,11 +14,10 @@ blur = cv2.blur(masked_img, (7,5))
 circles = cv2.HoughCircles(blur, cv2.HOUGH_GRADIENT, 1, 10,param1=50,param2=20,minRadius=5,maxRadius=40)
 circless = 0
 
-if circles is not None:
-    circles = np.uint16(np.around(circles))
-    for i in circles[0,:]:
-        cv2.circle(masked_img, (i[0], i[1]), i[2], (0, 255, 0), 2)
-        circless+=1
+circles = np.uint16(np.around(circles))
+for i in circles[0,:]:
+    cv2.circle(masked_img, (i[0], i[1]), i[2], (0, 255, 0), 2)
+    circless+=1
         
 end=time.perf_counter()
 print("En la imagen hay ",circless," celulas")
