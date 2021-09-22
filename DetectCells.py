@@ -8,7 +8,6 @@ imagen = cv2.imread("seq/Img000100.jpg")
 imagen_gray = cv2.cvtColor(imagen, cv2.COLOR_BGR2GRAY)
 mask = np.zeros((imagen_gray.shape), np.uint8)
 contour = np.array([[0,320],[640,320],[640,70],[0,80]])
-
 cv2.fillPoly(mask, pts =[contour], color=(255,255,255))
 masked_img = cv2.bitwise_and(mask,imagen_gray)
 blur = cv2.blur(masked_img, (7,5))
