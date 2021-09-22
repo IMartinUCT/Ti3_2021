@@ -11,8 +11,7 @@ contour = np.array([[0,320],[640,320],[640,70],[0,80]])
 
 cv2.fillPoly(mask, pts =[contour], color=(255,255,255))
 masked_img = cv2.bitwise_and(mask,imagen_gray)
-blur = cv2.blur(masked_img, (7,5), 0)
-_,th = cv2.threshold(blur,10,10,cv2.THRESH_BINARY)
+blur = cv2.blur(masked_img, (7,5))
 circles = cv2.HoughCircles(blur, cv2.HOUGH_GRADIENT, 1, 10,param1=50,param2=20,minRadius=5,maxRadius=40)
 circless = 0
 
