@@ -4,7 +4,7 @@ import numpy as np
 import time
 
 
-flag=1212
+
 
 circless,circuloA,circuloR = 0,0,0
 image = cv2.imread('seq/Img001212.jpg')
@@ -19,6 +19,7 @@ cv2.fillPoly(mask, pts =[contour], color=(255,255,255))
 masked_img = cv2.bitwise_and(mask,imagen_gray)
 blur = cv2.blur(masked_img, (7,5))
 circles = cv2.HoughCircles(blur, cv2.HOUGH_GRADIENT, 1.05, 10,param1=20,param2=12,minRadius=7,maxRadius=12)
+circles2 = cv2.HoughCircles(blur, cv2.HOUGH_GRADIENT, 2, 10, param1=100, param2=50, minRadius=25, maxRadius=40)
 
 if circles is not None:
     circles = np.uint16(np.around(circles))
@@ -26,8 +27,6 @@ if circles is not None:
         cv2.circle(image, (i[0], i[1]), i[2], (255, 255, 255), 1)
         circless+=1
     
-circles2 = cv2.HoughCircles(blur, cv2.HOUGH_GRADIENT, 2, 10, param1=100, param2=50, minRadius=25, maxRadius=40)
-
 if circles2 is not None: 
     circles2 = np.uint16(np.around(circles2))
     for i in circles2[0,:]:
