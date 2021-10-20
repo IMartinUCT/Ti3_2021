@@ -49,7 +49,6 @@ print("En la imagen hay ",circless," celulas")
 print(f"Celulas detectadas en {end - start:0.4f} segundos")
 print("Celulas Rojas = ",circuloR)
 print("Celulas Azules = ",circuloA)
-
 cv2.imshow('img', image)
 cv2.waitKey(0)
 cv2.destroyAllWindows()
