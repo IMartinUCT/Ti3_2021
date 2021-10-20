@@ -1,15 +1,10 @@
 import cv2 
-import cv2 
 import numpy as np 
 import time
-
-
-
 
 circless,circuloA,circuloR = 0,0,0
 image = cv2.imread('seq/Img001212.jpg')
 start=time.perf_counter()
-
 imagen_gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
 imageHSV = cv2.cvtColor(image, cv2.COLOR_BGR2HSV)
 mask = np.zeros((imagen_gray.shape), np.uint8)
@@ -17,7 +12,6 @@ contour = np.array([[0,185],[640,175],[640,70],[0,80]])
 cv2.fillPoly(mask, pts =[contour], color=(255,255,255))
 masked_img = cv2.bitwise_and(mask,imagen_gray)
 blur = cv2.blur(masked_img, (7,5))
-
 circles = cv2.HoughCircles(blur, cv2.HOUGH_GRADIENT, 1.05, 10,param1=20,param2=12,minRadius=7,maxRadius=12)
 circles2 = cv2.HoughCircles(blur, cv2.HOUGH_GRADIENT, 2, 10, param1=100, param2=50, minRadius=30, maxRadius=40)
 
